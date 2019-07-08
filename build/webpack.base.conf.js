@@ -1,6 +1,5 @@
 const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const _path = {
   main: path.resolve(__dirname, '../'),
@@ -9,15 +8,20 @@ const _path = {
   src: path.resolve(__dirname, '../src/')
 }
 
-var webpackConfig = {
+const baseWebpackConfig = {
   mode: 'production',
+  context: path.join(__dirname, '../'),
   entry: {
-    main: './src/scss/main.scss'
+    main: [
+      './src/scss/main.scss',
+      './src/js/main.js'
+    ]
   },
   module: {
     rules: [{
       test: /\.(scss|sass)$/,
       use: [
+        'css-hot-loader',
         MiniCssExtractPlugin.loader,
         "css-loader",
         "sass-loader"
@@ -27,9 +31,6 @@ var webpackConfig = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "./[name].css"
-    }),
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [ '**/*' ]
     })
   ],
   output: {
@@ -37,4 +38,4 @@ var webpackConfig = {
   }
 }
 
-module.exports = webpackConfig
+module.exports = { baseWebpackConfig, _path }

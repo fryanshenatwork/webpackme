@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config ./build/webpack.config.js"
+    "build": "webpack --config ./build/webpack.prod.conf.js",
+    "dev": "webpack-dev-server --config ./build/webpack.dev.conf.js"
   },
   "keywords": [
     "npm",
@@ -19,9 +20,12 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "webpack": "^4.35.2",
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "clean-webpack-plugin": "^3.0.0"
+    "clean-webpack-plugin": "^3.0.0",
+    "css-hot-loader": "^1.4.4"
   }
 }
