@@ -8,7 +8,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   devServer: {
     host: '0.0.0.0',
-    port: 8000,
+    port: 8461,
     contentBase: _path.dist,
     hot: true,
     inline: true,
@@ -17,7 +17,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     compress: true,
     progress: false,
     open: false
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 })
 
 module.exports = devWebpackConfig

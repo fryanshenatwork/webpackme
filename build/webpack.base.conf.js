@@ -1,5 +1,9 @@
+const webpack = require('webpack')
 const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+
 
 const _path = {
   main: path.resolve(__dirname, '../'),
@@ -28,13 +32,40 @@ const baseWebpackConfig = {
       ]
     }]
   },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+      new OptimizeCssAssetsPlugin({
+        cssProcessorOptions: { discardComments: { removeAll: true } },
+        canPrint: true
+      })
+    ]
+  },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "./[name].css"
+      filename: '[name].[chunkhash].css'
+    }),
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jquery': 'jquery',
+      'jQuery': 'jquery',
+      'Popper': 'popper.js',
+      'popper.js': 'popper.js'
     })
   ],
   output: {
-    path: _path.dist
+    path: _path.dist,
+    filename: '[name].[chunkhash].js'
+  },
+  devtool: 'source-map',
+  resolve: {
+    alias: {
+      '@': _path.src
+    }
   }
 }
 
