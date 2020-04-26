@@ -22,15 +22,28 @@ const baseWebpackConfig = {
     ]
   },
   module: {
-    rules: [{
-      test: /\.(scss|sass)$/,
-      use: [
-        'css-hot-loader',
-        MiniCssExtractPlugin.loader,
-        "css-loader",
-        "sass-loader"
-      ]
-    }]
+    rules: [
+      {
+        test: /\.(js)$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env']
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(scss|sass)$/,
+        use: [
+          'css-hot-loader',
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
+        ]
+      }
+    ]
   },
   optimization: {
     minimizer: [

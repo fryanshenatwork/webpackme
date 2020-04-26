@@ -3,5 +3,5 @@ require('jquery')
 require('popper.js')
 require('bootstrap')
 
-console.log('Webpack Comipled.')
+console.log(`Webpack Comipled.`)
 console.log('test')
