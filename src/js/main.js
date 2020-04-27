@@ -2,6 +2,7 @@ if (module.hot) {
   module.hot.accept()
 }
 
+require('@/scss/main.scss')
 require('jquery')
 require('popper.js')
 require('bootstrap')

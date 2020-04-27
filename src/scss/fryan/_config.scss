@@ -1,0 +1,63 @@
+$color-un: black;
+$color-deux: teal;
+$color-trois: pink;
+$color-quatre: orange;
+$color-cinq: purple;
+
+
+$color-light-un: lighten($color-un, 5%);
+$color-light-deux: lighten($color-deux, 5%);
+$color-light-trois: lighten($color-trois, 5%);
+$color-light-quatre: lighten($color-quatre, 5%);
+$color-light-cinq: lighten($color-cinq, 5%);
+$color-light-background: white;
+$color-light-font: black;
+$color-light-firstLayerBackground: rgba(0, 0 , 0, .1);
+
+$color-dark-un: darken($color-un, 10%);
+$color-dark-deux: darken($color-deux, 10%);
+$color-dark-trois: darken($color-trois, 10%);
+$color-dark-quatre: darken($color-quatre, 10%);
+$color-dark-cinq: darken($color-cinq, 10%);
+$color-dark-background: white;
+$color-dark-font: black;
+$color-dark-firstLayerBackground: rgba(0, 0 , 0, .1);
+
+$colors: (
+  'light': (
+    'un': $color-light-un,
+    'deux': $color-light-deux,
+    'trois': $color-light-trois,
+    'quatre': $color-light-quatre,
+    'cinq': $color-light-cinq,
+    'background': $color-light-background,
+    'font': $color-light-font,
+    'cardBackground': $color-light-firstLayerBackground
+  ),
+  'dark': (
+    'un': $color-dark-un,
+    'deux': $color-dark-deux,
+    'trois': $color-dark-trois,
+    'quatre': $color-dark-quatre,
+    'cinq': $color-dark-cinq,
+    'background': $color-dark-background,
+    'font': $color-dark-font,
+    'cardBackground': $color-dark-firstLayerBackground,
+  )
+) !default;
+$color-light-map: map-get($colors, 'light') !default;
+$color-dark-map: '' !default;
+@if map-has-key($colors, 'dark') {
+  $color-dark-map: map-get($colors, 'dark');
+}
+
+
+$breakpoints: (
+  'xs': 320, // custom
+  'sm': 576, // extend bootstrap4
+  'md': 768, // extend bootstrap4
+  'lg': 992, // extend bootstrap4
+  'xl': 1200, // extend bootstrap4
+  'xxl': 1440, // custom
+  'xxxl': 1600
+) !default;

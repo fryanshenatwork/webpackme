@@ -13,7 +13,6 @@ const baseWebpackConfig = {
   context: _path.main,
   entry: {
     main: [
-      './src/scss/main.scss',
       './src/js/main.js'
     ]
   },

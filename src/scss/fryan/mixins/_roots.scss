@@ -1,0 +1,33 @@
+@import '../config';
+
+@mixin darkColor {
+  @each $colorKey, $colorValue in $color-light-map {
+    @if map-has-key($color-dark-map, $colorKey) {
+      $darkColor: map-get($color-dark-map, $colorKey);
+      --fr-color-#{$colorKey}: #{$darkColor};
+    }
+    @else {
+      @error "Can't found `#{$colorKey}` in $color-dark-map, please check _config.scss";
+    }
+  }
+}
+body{
+  @each $colorKey, $value in $color-light-map {
+    --fr-color-#{$colorKey}: #{$value};
+  }
+
+  @if length($color-dark-map) > 1 {
+    &[data-prefers-color='auto'] {
+      @media (prefers-color-scheme: 'dark') {
+        @include darkColor();
+      }
+    }
+    &[data-prefers-color='dark'] {
+      @include darkColor();
+    }
+  }
+
+  @each $breakpointName, $value in $breakpoints {
+    --fr-breakpoint-#{$breakpointName}: #{$value};
+  }
+}

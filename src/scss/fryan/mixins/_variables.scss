@@ -1,0 +1,38 @@
+@import '../config';
+
+@function color($color: 'un', $type: 'var') {
+  @if map-has-key($color-light-map, $color) {
+    @if $type == 'var' {
+      @return var(--fr-color-#{$color});
+    }
+    @else {
+      @return map-get($color-light-map, $color);
+    }
+  } @else {
+    @error "Cant find `#{$color}` in colors map,
+      [ un, deux, trois, quatre, cinq ] can use";
+    @return ''
+  }
+};
+
+@function breakpoint($breakpoint: 'md', $type: 'var') {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @if $type == 'var' {
+      @return var(--fr-breakpoint-#{$breakpoint});
+    }
+    @else {
+      @return map-get($breakpoints, $breakpoint);
+    }
+  } @else {
+    @error "Cant find `#{$breakpoint}` in breakpoints map,
+      [ xs, sm, md, lg, xl, xxl, xxxl ] can use";
+    @return ''
+  }
+};
+$breakpoint-xs: var(--fr-breakpoint-xs);
+$breakpoint-sm: var(--fr-breakpoint-sm);
+$breakpoint-md: var(--fr-breakpoint-md);
+$breakpoint-lg: var(--fr-breakpoint-lg);
+$breakpoint-xl: var(--fr-breakpoint-xl);
+$breakpoint-xxl: var(--fr-breakpoint-xxl);
+$breakpoint-xxxl: var(--fr-breakpoint-xxxl);
