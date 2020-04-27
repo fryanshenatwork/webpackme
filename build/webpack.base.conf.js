@@ -10,7 +10,7 @@ const _path = {
 }
 
 const baseWebpackConfig = {
-  context: path.join(__dirname, '../'),
+  context: _path.main,
   entry: {
     main: [
       './src/scss/main.scss',

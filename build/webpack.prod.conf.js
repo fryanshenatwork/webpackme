@@ -4,6 +4,8 @@ const baseWebpackConfig = baseConfig.baseWebpackConfig
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const _path = baseConfig._path
 
 const prodWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
@@ -46,6 +48,11 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: '*'
+    }),
+    new HtmlWebpackPlugin({
+      filename: `index.html`,
+      title: `Template`,
+      minify: false
     })
   ]
 })

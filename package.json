@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config ./build/webpack.prod.conf.js",
-    "dev": "webpack-dev-server --config ./build/webpack.dev.conf.js"
+    "build": "export NODE_ENV=production && webpack --config ./build/webpack.prod.conf.js",
+    "dev": "export NODE_ENV=development && webpack-dev-server --config ./build/webpack.dev.conf.js"
   },
   "keywords": [
     "npm",
@@ -23,6 +23,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^3.0.0",
     "eslint-loader": "^4.0.2",
+    "html-webpack-plugin": "^4.2.0",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",

@@ -5,5 +5,6 @@ if (module.hot) {
 require('jquery')
 require('popper.js')
 require('bootstrap')
+require('bootstrap/scss/bootstrap.scss')
 
 console.log('Webpack Comipled.')
