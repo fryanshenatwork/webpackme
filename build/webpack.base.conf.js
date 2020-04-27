@@ -1,9 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-
 
 const _path = {
   main: path.resolve(__dirname, '../'),
@@ -13,7 +10,6 @@ const _path = {
 }
 
 const baseWebpackConfig = {
-  mode: 'production',
   context: path.join(__dirname, '../'),
   entry: {
     main: [
@@ -29,9 +25,11 @@ const baseWebpackConfig = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
+              presets: ['@babel/preset-env'],
             }
-          }
+          },
+          { loader: "eslint-loader" },
+          { loader: "prettier-loader" }
         ]
       },
       {
@@ -45,22 +43,9 @@ const baseWebpackConfig = {
       }
     ]
   },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true
-      }),
-      new OptimizeCssAssetsPlugin({
-        cssProcessorOptions: { discardComments: { removeAll: true } },
-        canPrint: true
-      })
-    ]
-  },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash].css'
+      filename: process.env.NODE_ENV === 'production' ? '[name].[hash].css' : 'bundle.css'
     }),
     new webpack.ProvidePlugin({
       '$': 'jquery',
@@ -72,7 +57,7 @@ const baseWebpackConfig = {
   ],
   output: {
     path: _path.dist,
-    filename: '[name].[chunkhash].js'
+    filename: process.env.NODE_ENV === 'production' ? '[name].[hash].js' : 'bundle.js'
   },
   devtool: 'source-map',
   resolve: {

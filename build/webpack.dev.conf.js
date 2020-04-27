@@ -13,14 +13,20 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     inline: true,
     publicPath: '/',
-    watchContentBase: true,
+    watchContentBase: false,
     compress: true,
     progress: false,
     open: false
   },
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000,
+    ignored: ['node_modules/**/*', _path.dist, _path.build]
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  watch: false
 })
 
 module.exports = devWebpackConfig

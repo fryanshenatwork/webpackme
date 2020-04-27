@@ -1,8 +1,9 @@
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base.conf')
 const baseWebpackConfig = baseConfig.baseWebpackConfig
-const _path = baseConfig._path
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const prodWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
@@ -23,9 +24,19 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
           priority: 10,
           enforce: true
         }
-
-      },
-    }
+      }
+    },
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+      new OptimizeCssAssetsPlugin({
+        cssProcessorOptions: { discardComments: { removeAll: true } },
+        canPrint: true
+      })
+    ]
   },
   performance: {
     hints: false,
