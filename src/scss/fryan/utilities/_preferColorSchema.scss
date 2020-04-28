@@ -4,13 +4,12 @@
     ($preferColor == 'l') or
     ($preferColor == 'L')
   {
-    @at-root #{"body[data-prefers-color='auto'] " + &}, &{
-      @media (prefers-color-scheme: 'light'), (min-width: 0) {
+    @at-root #{"body[data-prefers-color='auto'] " + &}{
+      @media (prefers-color-scheme: 'light') {
         @content;
       }
     }
     @at-root #{"body[data-prefers-color='light'] " + &} {
-      @extend %colorTransition;
       @content;
     }
   }
@@ -38,8 +37,4 @@
 }
 @mixin dark {
   @include color('dark') {@content;}
-}
-
-%colorTransition {
-  transition: .3s ease;
 }

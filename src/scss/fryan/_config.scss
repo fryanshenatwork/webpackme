@@ -1,5 +1,5 @@
-$color-un: black;
-$color-deux: teal;
+$color-un: teal;
+$color-deux: yellow;
 $color-trois: pink;
 $color-quatre: orange;
 $color-cinq: purple;
@@ -19,8 +19,8 @@ $color-dark-deux: darken($color-deux, 10%);
 $color-dark-trois: darken($color-trois, 10%);
 $color-dark-quatre: darken($color-quatre, 10%);
 $color-dark-cinq: darken($color-cinq, 10%);
-$color-dark-background: white;
-$color-dark-font: black;
+$color-dark-background: black;
+$color-dark-font: white;
 $color-dark-firstLayerBackground: rgba(0, 0 , 0, .1);
 
 $colors: (
@@ -51,7 +51,6 @@ $color-dark-map: '' !default;
   $color-dark-map: map-get($colors, 'dark');
 }
 
-
 $breakpoints: (
   'xs': 320, // custom
   'sm': 576, // extend bootstrap4
@@ -61,3 +60,22 @@ $breakpoints: (
   'xxl': 1440, // custom
   'xxxl': 1600
 ) !default;
+
+$spacing: (
+  'un': .625rem,
+  'deux': .8rem,
+  'trois': 1.25rem,
+  'quatre': 1.5rem,
+  'cinq': 1.8rem
+);
+
+$settings: (
+  'inputHeight': 2.3em,
+  'inputPadding': .3em .5em,
+  'inputPaddingLg': .5em .8em,
+  'inputRadius': .3rem,
+  'inputBorderWidth': 1px,
+  'inputBorderColor': rgb(210, 210, 210),
+);
+
+$passphrase: '.fr';

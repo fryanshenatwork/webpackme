@@ -1,0 +1,31 @@
+@function order ($str) {
+  $valid: (
+    'un': 1,
+    'deux': 2,
+    'trois': 3,
+    'quatre': 4,
+    'cinq': 5
+  );
+
+  @if (
+    type-of($str) == string and
+    map-has-key($valid, $str )
+   ) {
+    @return $str;
+  }
+  @else if
+    type-of($str) == number
+  {
+    $get: false;
+    @each $validKey, $value in $valid {
+      @if number($value) == number($str) {
+        $get: $validKey
+      }
+    }
+    @if $get == false { @error "Key not allowed"; }
+    @else { @return $get; }
+  }
+  @else {
+    @return $str
+  }
+}

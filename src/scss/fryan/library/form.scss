@@ -1,0 +1,81 @@
+@import '../config';
+@import '../utilities/variables';
+
+#{$passphrase} {
+  &.form{
+    display: block;
+    margin: spacing(un) auto spacing(trois) auto;
+
+    .title{
+      line-height: settings(inputHeight);
+    }
+    %input-common {
+      display: block;
+      width: 100%;
+      min-height: settings(inputHeight);
+      height: auto;
+      box-sizing: border-box;
+      border-radius: settings(inputRadius);
+    }
+    %input-border{
+      border: settings(inputBorderWidth) solid settings(inputBorderColor);
+      outline: 0;
+      &:hover, &:active, &:focus{
+        border-color: mix(color(un, val), white, 50%);
+      }
+    }
+    %input-padding{
+      padding: settings(inputPadding, value);
+    }
+
+    label {
+      @extend %input-common;
+      @extend %input-border;
+      line-height: 1.2em;
+      padding: settings(inputPaddingLg);
+      cursor: pointer;
+      &:not(:first-child) {
+        margin-top: spacing(un);
+      }
+    }
+    label.upload#{$passphrase}{
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="password"],
+    input[type="search"],
+    input[type="week"],
+    input[type="month"],
+    input[type="date"],
+    input[type="time"]
+    {
+      @extend %input-common;
+      @extend %input-padding;
+      @extend %input-border;
+    }
+    input[type="range"] {
+      @extend %input-common;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: spacing(un);
+    }
+    input[type="file"]{
+      display: none;
+    }
+    select{
+      @extend %input-common;
+      @extend %input-border;
+      height: settings(inputHeight);
+    }
+    textarea{
+      @extend %input-common;
+      @extend %input-border;
+      padding: settings(inputPaddingLg);
+      min-height: 8em;
+    }
+  }
+}
