@@ -1,1 +1,1 @@
-import './plugins'
+console.log('WebpackMe is working')
