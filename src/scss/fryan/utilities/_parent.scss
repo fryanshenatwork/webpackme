@@ -1,0 +1,48 @@
+/*
+  at-root Mixins
+  - Version: 2.1
+  - Author: Fryan
+*/
+
+/*--
+  Language mixin
+    @include language(en){}
+--*/
+@mixin language($language-type:all) {
+  @if $language-type == "en"{
+    @at-root #{"html:lang(en) " + &} {
+      @content;
+    }
+  }
+  @else if $language-type == "tw"{
+    @at-root #{"html:lang(zh-Hant-TW) " + &} {
+      @content;
+    }
+  }
+  @else if $language-type == "cn"{
+    @at-root #{"html:lang(zh-Hans) " + &} {
+      @content;
+    }
+  }
+  @else if $language-type == "all"{
+    @at-root #{"html " + &} {
+      @content;
+    }
+  }
+}
+
+/*--
+  Parent mixin
+    $parent: &;
+    @include parent($parent){
+      &:hover h1{}
+    }
+--*/
+@mixin parent($parent:parent){
+  @at-root #{$parent} {@content;}
+}
+@mixin parent-extend($class,$class-replace){
+  @at-root #{selector-replace(&, '#{$class}', '#{$class-replace}')} {
+    @content;
+  }
+}

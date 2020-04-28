@@ -1,7 +1,7 @@
-$color-un: teal;
-$color-deux: yellow;
-$color-trois: pink;
-$color-quatre: orange;
+$color-un: #5AA3BF;
+$color-deux: #F2A81D;
+$color-trois: #731810;
+$color-quatre: #658791;
 $color-cinq: purple;
 
 
@@ -10,18 +10,20 @@ $color-light-deux: lighten($color-deux, 5%);
 $color-light-trois: lighten($color-trois, 5%);
 $color-light-quatre: lighten($color-quatre, 5%);
 $color-light-cinq: lighten($color-cinq, 5%);
-$color-light-background: white;
-$color-light-font: black;
+$color-light-background: rgb(255, 254, 250);
+$color-light-font: rgb(80, 80, 80);
 $color-light-firstLayerBackground: rgba(0, 0 , 0, .1);
+$color-ligh-borderColor: rgb(200, 200, 200);
 
 $color-dark-un: darken($color-un, 10%);
 $color-dark-deux: darken($color-deux, 10%);
 $color-dark-trois: darken($color-trois, 10%);
 $color-dark-quatre: darken($color-quatre, 10%);
 $color-dark-cinq: darken($color-cinq, 10%);
-$color-dark-background: black;
-$color-dark-font: white;
-$color-dark-firstLayerBackground: rgba(0, 0 , 0, .1);
+$color-dark-background: rgb(19, 29, 36);
+$color-dark-font: rgba(255, 255, 255, .85);
+$color-dark-firstLayerBackground: rgb(22, 35, 43);
+$color-dark-borderColor: rgba(255, 255, 255, .1);
 
 $colors: (
   'light': (
@@ -32,7 +34,8 @@ $colors: (
     'cinq': $color-light-cinq,
     'background': $color-light-background,
     'font': $color-light-font,
-    'cardBackground': $color-light-firstLayerBackground
+    'cardBackground': $color-light-firstLayerBackground,
+    'borderColor': $color-ligh-borderColor,
   ),
   'dark': (
     'un': $color-dark-un,
@@ -43,6 +46,7 @@ $colors: (
     'background': $color-dark-background,
     'font': $color-dark-font,
     'cardBackground': $color-dark-firstLayerBackground,
+    'borderColor': $color-dark-borderColor,
   )
 ) !default;
 $color-light-map: map-get($colors, 'light') !default;
@@ -76,7 +80,7 @@ $settings: (
   'inputPaddingLg': .5em .8em,
   'inputRadius': .3rem,
   'inputBorderWidth': 1px,
-  'inputBorderColor': rgb(210, 210, 210),
+  'inputBorderColor': var(--fr-color-borderColor),
 );
 
 $passphrase: '.fr';
