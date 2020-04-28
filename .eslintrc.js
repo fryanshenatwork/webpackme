@@ -12,7 +12,8 @@ module.exports = {
     'semi': [2, 'never'],
     'no-console': 'error',
     'arrow-parens': 0,
-    'no-console': 'off'
+    'no-console': 'off',
+    'no-unused-vars': 'error'
   },
   'parserOptions': {
     'sourceType': 'module',
