@@ -13,7 +13,7 @@ $color-light-cinq: lighten($color-cinq, 5%);
 $color-light-background: rgb(255, 254, 250);
 $color-light-font: rgb(80, 80, 80);
 $color-light-firstLayerBackground: rgba(0, 0 , 0, .1);
-$color-ligh-borderColor: rgb(200, 200, 200);
+$color-light-borderColor: rgb(200, 200, 200);
 
 $color-dark-un: darken($color-un, 10%);
 $color-dark-deux: darken($color-deux, 10%);
@@ -35,7 +35,7 @@ $colors: (
     'background': $color-light-background,
     'font': $color-light-font,
     'cardBackground': $color-light-firstLayerBackground,
-    'borderColor': $color-ligh-borderColor,
+    'borderColor': $color-light-borderColor,
   ),
   'dark': (
     'un': $color-dark-un,
@@ -66,11 +66,11 @@ $breakpoints: (
 ) !default;
 
 $spacing: (
-  'un': .625rem,
+  'un': .35rem,
   'deux': .8rem,
   'trois': 1.25rem,
-  'quatre': 1.5rem,
-  'cinq': 1.8rem
+  'quatre': 1.7rem,
+  'cinq': 2.15rem
 );
 
 $settings: (

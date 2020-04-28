@@ -1,11 +1,28 @@
 @import '../config';
 @import '../utilities/variables';
+@import './loading';
 
 #{$passphrase} {
   &.form{
+    position: relative;
     display: block;
     margin: spacing(un) auto spacing(trois) auto;
 
+    &.loading,
+    &[data-submitting="true"]{
+      &:before{
+        content: '';
+        @extend %fr-loading-background;
+      }
+      &:after{
+        content: '';
+        @extend %fr-loading-circle;
+      }
+    }
+
+    .form-group{
+      margin-bottom: spacing(un);
+    }
     .title{
       line-height: settings(inputHeight);
     }
@@ -22,7 +39,7 @@
       outline: 0;
       &:hover, &:active, &:focus{
         @include light{
-          border-color: fade-in(darken($color-ligh-borderColor, 8%), .2);
+          border-color: fade-in(darken($color-light-borderColor, 8%), .2);
         }
         @include dark{
           border-color: fade-in(lighten($color-dark-borderColor, 5%), .2);

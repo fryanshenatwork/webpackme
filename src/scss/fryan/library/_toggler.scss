@@ -1,0 +1,93 @@
+@import '../config';
+@import '../utilities/index';
+
+label#{$passphrase}.toggler{
+  $holdingLighten: 5%;
+  $dotHeightPercent: .6;
+  $dotHeight: #{settings(inputHeight, v) * $dotHeightPercent};
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+
+  span[data-status] {
+    display: none;
+    line-height: settings(inputHeight);
+  }
+  i.deco{
+    position: relative;
+    display: inline-block;
+    width: 3em;
+    height: settings(inputHeight);
+    margin-right: spacing(deux);
+    &:before, &:after{
+      content: '';
+      position: absolute;
+      top: #{(100% - ($dotHeightPercent * 100)) /  2};
+      height: $dotHeight;
+      @extend %transition;
+    }
+    &:before{
+      left: 0;
+      width: 100%;
+      border-radius: 99em;
+      background: lighten($color-light-borderColor, $holdingLighten);
+      @include dark{
+        background: lighten($color-dark-borderColor, $holdingLighten);
+      }
+    }
+    &:after{
+      width: $dotHeight;
+      background: white;
+      border-radius: 100%;
+      border: 1px solid color(borderColor);
+    }
+  }
+  input[type="checkbox"]{
+    display: none;
+    &:checked {
+      ~ span[data-status="true"] {
+        display: inline-block;
+      }
+      ~ i.deco{
+        &:after{
+          left: calc(100% - #{$dotHeight});
+        }
+        &:before{
+          background-color: lighten($color-light-un, $holdingLighten);
+          @include dark {
+            background-color: lighten($color-dark-un, $holdingLighten);
+          }
+        }
+      }
+    }
+    &:not(:checked) {
+      ~ span[data-status="false"] {
+        display: inline-block;
+      }
+    }
+  }
+  &:hover input[type="checkbox"] {
+    &:checked {
+      ~ i.deco:before{
+        background-color: $color-light-un;
+        @include dark {
+          background-color: $color-dark-un;
+        }
+      }
+    }
+    &:not(:checked) {
+      ~ i.deco:before{
+        background-color: $color-light-borderColor;
+        @include dark {
+          background-color: $color-dark-borderColor;
+        }
+      }
+    }
+  }
+}
