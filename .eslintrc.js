@@ -1,8 +1,8 @@
 module.exports = {
   env: {
-    "node": true,
-    "es6": true,
-    "jest": true
+    'node': true,
+    'es6': true,
+    'jest': true
   },
   globals: {
     name: 'off'
@@ -13,5 +13,8 @@ module.exports = {
     'no-console': 'error',
     'arrow-parens': 0,
     'no-console': 'off'
+  },
+  'parserOptions': {
+    'sourceType': 'module',
   }
 }
