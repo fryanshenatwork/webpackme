@@ -14,9 +14,8 @@ npm install
 1. run `npm run dev` to start dev-server, default port is `8461` you can modify the port in `src/webpack.dev.conf.js`
 2. Insert js and css to wherever you want
 ```html
-<link rel="stylesheet" type="text/css" href="http://localhost:8461/bundle.css" />
-<script src="http://localhost:8461/webpack-dev-server/main.js"></script>
-<script src="http://localhost:8461/bundle.js"></script>
+<link rel="stylesheet" type="text/css" href="http://localhost:8461/assets/bundle.css" />
+<script src="http://127.0.0.1:8461/assets/bundle.js"></script>
 ```
 
 ### Production
