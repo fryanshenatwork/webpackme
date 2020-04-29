@@ -9,11 +9,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devServer: {
     host: '0.0.0.0',
     port: 8461,
-    contentBase: _path.dist,
+    contentBase: _path.src,
     hot: true,
     inline: true,
     publicPath: '/',
-    watchContentBase: false,
+    watchContentBase: true,
     compress: true,
     progress: false,
     open: false
