@@ -22,6 +22,7 @@ const baseWebpackConfig = {
     rules: [
       {
         test: /\.(js)$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
@@ -29,12 +30,12 @@ const baseWebpackConfig = {
               presets: ['@babel/preset-env'],
             }
           },
-          { loader: 'eslint-loader' },
-          { loader: 'prettier-loader' }
+          { loader: 'eslint-loader' }
         ]
       },
       {
         test: /\.(scss|sass)$/,
+        exclude: /node_modules/,
         use: [
           'css-hot-loader',
           MiniCssExtractPlugin.loader,
