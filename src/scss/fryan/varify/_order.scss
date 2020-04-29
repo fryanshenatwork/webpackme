@@ -10,7 +10,7 @@
   @if (
     type-of($str) == string and
     map-has-key($valid, $str )
-   ) {
+  ) {
     @return $str;
   }
   @else if
@@ -26,6 +26,6 @@
     @else { @return $get; }
   }
   @else {
-    @return $str
+    @return $str;
   }
 }

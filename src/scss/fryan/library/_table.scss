@@ -2,12 +2,12 @@
 @import '../utilities/index';
 
 #{$passphrase}.table{
-	display: block;
-	width: 100%;
-	height: auto;
-	margin: spacing(un) auto spacing(5) auto;
-	overflow-x: auto;
-	overflow-y: visible;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: spacing(un) auto spacing(5) auto;
+  overflow-x: auto;
+  overflow-y: visible;
   border: 1px solid color(borderColor);
   border-radius: settings(inputRadius);
   -webkit-overflow-scrolling: touch;
@@ -15,21 +15,21 @@
   $tdPadding: spacing(un) spacing(deux);
   $lightBackground: rgba(0, 0, 0, .1);
   $darkBackground: rgba(255, 255, 255, .04);
-	table{
-		width: 100%;
-		min-width: 800px;
-		border: 1px solid transparent;
-		background: $darkBackground;
-	}
-	td{
-		padding: $tdPadding;
-		min-width: 3em;
-		vertical-align: middle;
-	}
-	thead{
-		width: 100%;
-		tr{
-			th{
+  table{
+    width: 100%;
+    min-width: 800px;
+    border: 1px solid transparent;
+    background: $darkBackground;
+  }
+  td{
+    padding: $tdPadding;
+    min-width: 3em;
+    vertical-align: middle;
+  }
+  thead{
+    width: 100%;
+    tr{
+      th{
         padding: $tdPadding;
         padding-top: spacing(deux);
         padding-bottom: spacing(deux);
@@ -37,7 +37,7 @@
         border-right-color: color(borderColor);
         border-bottom-color: color(borderColor);
         font-size: 1.1em;
-				font-weight: bold;
+        font-weight: bold;
         color: color(font);
 
         @include light{
@@ -46,21 +46,21 @@
         @include dark{
           background: $darkBackground;
         }
-			}
-		}
-	}
-	tbody{
-		width: 100%;
-		tr{
-			&:hover{
-				background-color: rgba(0, 0, 0, .03);
       }
-			td{
+    }
+  }
+  tbody{
+    width: 100%;
+    tr{
+      &:hover{
+        background-color: rgba(0, 0, 0, .03);
+      }
+      td{
         border: 1px solid transparent;
         border-right-color: color(borderColor);
         border-bottom-color: color(borderColor);
       }
       &:last-child td{ border-bottom-color: transparent; }
-		}
-	}
+    }
+  }
 }

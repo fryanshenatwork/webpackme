@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const _path = {
   main: path.resolve(__dirname, '../'),
@@ -30,7 +31,10 @@ const baseWebpackConfig = {
               presets: ['@babel/preset-env'],
             }
           },
-          { loader: 'eslint-loader' }
+          {
+            loader: 'eslint-loader',
+            options: { fix: true }
+          }
         ]
       },
       {
@@ -49,7 +53,7 @@ const baseWebpackConfig = {
     new MiniCssExtractPlugin({
       filename: process.env.NODE_ENV === 'production'
         ? _path.buildAssets + '[name].[hash].css'
-        : _path.buildAssets +  'bundle.css'
+        : _path.buildAssets + 'bundle.css'
     }),
     new webpack.ProvidePlugin({
       '$': 'jquery',
@@ -60,6 +64,9 @@ const baseWebpackConfig = {
     }),
     new HtmlWebpackPlugin({
       template: `${_path.src}/public/index.html`
+    }),
+    new StylelintPlugin({
+      fix: true
     })
   ],
   output: {
