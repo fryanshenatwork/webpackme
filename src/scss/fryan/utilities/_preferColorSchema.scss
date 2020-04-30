@@ -1,10 +1,8 @@
 @mixin color($preferColor: 'light') {
-  @if
-    ($preferColor == 'light') or
+  @if ($preferColor == 'light') or
     ($preferColor == 'l') or
-    ($preferColor == 'L')
-  {
-    @at-root #{"body[data-prefers-color='auto'] " + &}{
+    ($preferColor == 'L') {
+    @at-root #{"body[data-prefers-color='auto'] " + &} {
       @media (prefers-color-scheme: 'light') {
         @content;
       }
@@ -16,8 +14,7 @@
   @else if
     ($preferColor == 'dark') or
     ($preferColor =='d') or
-    ($preferColor =='D')
-  {
+    ($preferColor =='D') {
     @at-root #{"body[data-prefers-color='auto'] " + &} {
       @media (prefers-color-scheme: 'dark') {
         @content;
@@ -33,8 +30,13 @@
 }
 
 @mixin light {
-  @include color('light') {@content;}
+  @include color('light') {
+    @content;
+  }
 }
+
 @mixin dark {
-  @include color('dark') {@content;}
+  @include color('dark') {
+    @content;
+  }
 }

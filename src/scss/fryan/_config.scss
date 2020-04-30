@@ -12,7 +12,7 @@ $color-light-quatre: lighten($color-quatre, 5%);
 $color-light-cinq: lighten($color-cinq, 5%);
 $color-light-background: rgb(255, 254, 250);
 $color-light-font: rgb(80, 80, 80);
-$color-light-firstLayerBackground: rgba(0, 0 , 0, .1);
+$color-light-firstLayerBackground: mix($color-light-background, black, 90%);
 $color-light-borderColor: rgb(200, 200, 200);
 
 $color-dark-un: darken($color-un, 10%);
@@ -22,7 +22,7 @@ $color-dark-quatre: darken($color-quatre, 10%);
 $color-dark-cinq: darken($color-cinq, 10%);
 $color-dark-background: rgb(19, 29, 36);
 $color-dark-font: rgba(255, 255, 255, .85);
-$color-dark-firstLayerBackground: rgb(22, 35, 43);
+$color-dark-firstLayerBackground: mix($color-dark-background, white, 97%);
 $color-dark-borderColor: rgba(255, 255, 255, .1);
 
 $colors: (
@@ -51,6 +51,7 @@ $colors: (
 ) !default;
 $color-light-map: map-get($colors, 'light') !default;
 $color-dark-map: '' !default;
+
 @if map-has-key($colors, 'dark') {
   $color-dark-map: map-get($colors, 'dark');
 }

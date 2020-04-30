@@ -8,24 +8,25 @@
   Language mixin
     @include language(en){}
 --*/
+
 @mixin language($language-type:all) {
-  @if $language-type == "en"{
-    @at-root #{"html:lang(en) " + &} {
+  @if $language-type == 'en' {
+    @at-root #{'html:lang(en) ' + &} {
       @content;
     }
   }
-  @else if $language-type == "tw"{
-    @at-root #{"html:lang(zh-Hant-TW) " + &} {
+  @else if $language-type == 'tw' {
+    @at-root #{'html:lang(zh-Hant-TW) ' + &} {
       @content;
     }
   }
-  @else if $language-type == "cn"{
-    @at-root #{"html:lang(zh-Hans) " + &} {
+  @else if $language-type == 'cn' {
+    @at-root #{'html:lang(zh-Hans) ' + &} {
       @content;
     }
   }
-  @else if $language-type == "all"{
-    @at-root #{"html " + &} {
+  @else if $language-type == 'all' {
+    @at-root #{'html ' + &} {
       @content;
     }
   }
@@ -38,10 +39,14 @@
       &:hover h1{}
     }
 --*/
-@mixin parent($parent:parent){
-  @at-root #{$parent} {@content;}
+
+@mixin parent($parent:parent) {
+  @at-root #{$parent} {
+    @content;
+  }
 }
-@mixin parent-extend($class,$class-replace){
+
+@mixin parent-extend($class,$class-replace) {
   @at-root #{selector-replace(&, '#{$class}', '#{$class-replace}')} {
     @content;
   }

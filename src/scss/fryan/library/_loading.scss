@@ -2,7 +2,7 @@
 @import '../utilities/index';
 @import './animate';
 
-%fr-loading-background{
+%fr-loading-background {
   position: absolute;
   top: 0;
   left: 0;
@@ -16,7 +16,7 @@
   }
 }
 
-%fr-loading-circle{
+%fr-loading-circle {
   $sz: 3em;
   position: absolute;
   z-index: 1;

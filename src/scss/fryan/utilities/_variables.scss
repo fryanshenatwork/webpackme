@@ -11,8 +11,8 @@
       @return map-get($color-light-map, $color);
     }
   } @else {
-    @error "Cant find `#{$color}` in colors map,
-      [ un, deux, trois, quatre, cinq ] can use";
+    @error 'Cant find `#{$color}` in colors map,
+      [ un, deux, trois, quatre, cinq ] can use';
     @return '';
   }
 }
@@ -26,8 +26,8 @@
       @return map-get($breakpoints, $breakpoint);
     }
   } @else {
-    @error "Cant find `#{$breakpoint}` in breakpoints map,
-      [ xs, sm, md, lg, xl, xxl, xxxl ] can use";
+    @error 'Cant find `#{$breakpoint}` in breakpoints map,
+      [ xs, sm, md, lg, xl, xxl, xxxl ] can use';
     @return '';
   }
 }
@@ -50,8 +50,8 @@ $breakpoint-xxxl: var(--fr-breakpoint-xxxl);
       @return map-get($spacing, $space);
     }
   } @else {
-    @error "Cant find `#{$space}` in colors map,
-      [ un, deux, trois, quatre, cinq ] can use";
+    @error 'Cant find `#{$space}` in colors map,
+      [ un, deux, trois, quatre, cinq ] can use';
     @return '';
   }
 }
@@ -65,7 +65,7 @@ $breakpoint-xxxl: var(--fr-breakpoint-xxxl);
       @return map-get($settings, $theSize);
     }
   } @else {
-    @error "Cant find `#{$theSize}` in size map";
+    @error 'Cant find `#{$theSize}` in size map';
     @return '';
   }
 };

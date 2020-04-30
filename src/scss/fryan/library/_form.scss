@@ -3,27 +3,27 @@
 @import './loading';
 
 #{$passphrase} {
-  &.form{
+  &.form {
     position: relative;
     display: block;
     margin: spacing(un) auto spacing(trois) auto;
 
     &.loading,
-    &[data-submitting="true"]{
-      &:before{
+    &[data-submitting='true'] {
+      &:before {
         content: '';
         @extend %fr-loading-background;
       }
-      &:after{
+      &:after {
         content: '';
         @extend %fr-loading-circle;
       }
     }
 
-    .form-group{
+    .form-group {
       margin-bottom: spacing(un);
     }
-    .title{
+    .title {
       line-height: settings(inputHeight);
     }
     %input-common {
@@ -34,23 +34,23 @@
       box-sizing: border-box;
       border-radius: settings(inputRadius);
     }
-    %input-border{
+    %input-border {
       border: settings(inputBorderWidth) solid settings(inputBorderColor);
       outline: 0;
-      &:hover, &:active, &:focus{
-        @include light{
+      &:hover, &:active, &:focus {
+        @include light {
           border-color: fade-in(darken($color-light-borderColor, 8%), .2);
         }
-        @include dark{
+        @include dark {
           border-color: fade-in(lighten($color-dark-borderColor, 5%), .2);
         }
       }
     }
-    %input-padding{
+    %input-padding {
       padding: settings(inputPadding, value);
     }
-    %input-disabled{
-      &:disabled{
+    %input-disabled {
+      &:disabled {
         opacity: .5;
       }
     }
@@ -64,48 +64,47 @@
       &:not(:first-child) {
         margin-top: spacing(un);
       }
-      input:disabled~span{
+      input:disabled ~ span {
         opacity: .5;
       }
     }
     // label.upload#{$passphrase}{
     // }
-    input[type="text"],
-    input[type="number"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="url"],
-    input[type="password"],
-    input[type="search"],
-    input[type="week"],
-    input[type="month"],
-    input[type="date"],
-    input[type="time"]
-    {
+    input[type='text'],
+    input[type='number'],
+    input[type='email'],
+    input[type='tel'],
+    input[type='url'],
+    input[type='password'],
+    input[type='search'],
+    input[type='week'],
+    input[type='month'],
+    input[type='date'],
+    input[type='time'] {
       @extend %input-common;
       @extend %input-padding;
       @extend %input-border;
-      &:disabled{
+      &:disabled {
         @extend %input-disabled;
         cursor: not-allowed;
       }
     }
-    input[type="range"] {
+    input[type='range'] {
       @extend %input-common;
     }
-    input[type="radio"],
-    input[type="checkbox"] {
+    input[type='radio'],
+    input[type='checkbox'] {
       margin-right: spacing(un);
     }
-    input[type="file"]{
+    input[type='file'] {
       display: none;
     }
-    select{
+    select {
       @extend %input-common;
       @extend %input-border;
       height: settings(inputHeight);
     }
-    textarea{
+    textarea {
       @extend %input-common;
       @extend %input-border;
       padding: settings(inputPaddingLg);

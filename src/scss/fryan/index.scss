@@ -1,13 +1,18 @@
 @import './config';
-
 @import './utilities/index';
 @import './library/index';
 
-body{
+body {
   background: color(background);
   #app {
     .container {
       background: color(cardBackground);
+    }
+  }
+
+  input, button {
+    &, &:hover, &:visited, &:focus {
+      outline: 0;
     }
   }
 }

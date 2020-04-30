@@ -16,23 +16,33 @@
     @content;
   };
 }
+
 @mixin breakpoint-u($sz) {
   @media only screen and (min-width: #{checkVP($sz)}) {
     @content;
   };
 }
+
 @mixin breakpoint-b($szFrom, $szTo) {
   @media (min-width: #{checkVP($szFrom)}) and (max-width: #{checkVP($szTo)}) {
     @content;
   }
 }
 
-@mixin bkd($sz)
-  {@include breakpoint-d($sz) {@content;};
+@mixin bkd($sz) {
+  @include breakpoint-d($sz) {
+    @content;
+  };
 }
+
 @mixin bku($sz) {
-  @include breakpoint-u($sz) {@content;};
+  @include breakpoint-u($sz) {
+    @content;
+  };
 }
+
 @mixin bkb($szFrom, $szTo) {
-  @include breakpoint-b($szFrom, $szTo) {@content;};
+  @include breakpoint-b($szFrom, $szTo) {
+    @content;
+  };
 }

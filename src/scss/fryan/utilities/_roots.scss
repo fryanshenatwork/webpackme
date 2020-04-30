@@ -11,11 +11,10 @@
     }
   }
 }
-body{
+body {
   @each $colorKey, $value in $color-light-map {
     --fr-color-#{$colorKey}: #{$value};
   }
-
   @if length($color-dark-map) > 1 {
     &[data-prefers-color='auto'] {
       @media (prefers-color-scheme: 'dark') {
@@ -26,15 +25,12 @@ body{
       @include darkColor();
     }
   }
-
   @each $breakpointName, $value in $breakpoints {
     --fr-breakpoint-#{$breakpointName}: #{$value};
   }
-
   @each $spaceName, $value in $spacing {
     --fr-spacing-#{$spaceName}: #{$value};
   }
-
   @each $sizeName, $value in $settings {
     --fr-settings-#{$sizeName}: #{$value};
   }

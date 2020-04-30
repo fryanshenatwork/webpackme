@@ -1,0 +1,22 @@
+html, body, #app {
+  display: block;
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y:auto;
+  #app {
+    display: flex;
+    flex-direction: column;
+    #app-hader {
+      flex: 0 0 auto;
+    }
+    #app-body {
+      flex: 1 1 auto;
+    }
+    #app-footer {
+      flex: 0 0 auto;
+    }
+  }
+}

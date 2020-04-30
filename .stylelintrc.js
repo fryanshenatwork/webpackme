@@ -20,15 +20,45 @@ module.exports = {
     'declaration-block-semicolon-newline-before': 'never-multi-line',
     'block-closing-brace-newline-after': 'always-single-line',
     'block-closing-brace-newline-before': 'always-multi-line',
-    // 'block-opening-brace-newline-after': 'always',
-    // 'block-opening-brace-newline-before': 'never-single-line',
     'selector-list-comma-newline-after': 'always-multi-line',
     'selector-list-comma-newline-before': 'never-multi-line',
-    'media-query-list-comma-newline-after': 'never-multi-line',
-    'media-query-list-comma-newline-before': 'always',
+    'media-query-list-comma-newline-after': 'always-multi-line',
+    'media-query-list-comma-newline-before': 'never-multi-line',
     'no-missing-end-of-source-newline': true,
-    'no-empty-first-line': true
-
-
+    'no-empty-first-line': true,
+    'string-quotes': 'single',
+    'declaration-block-trailing-semicolon': 'always',
+    'declaration-block-semicolon-space-before': 'never',
+    'at-rule-semicolon-newline-after': 'always',
+    'at-rule-empty-line-before': [
+      'always',
+      {
+        except:[
+          'blockless-after-blockless',
+          'first-nested',
+          'inside-block'
+        ]
+      }
+    ],
+    'at-rule-name-case': 'lower',
+    'at-rule-name-space-after': 'always',
+    'at-rule-semicolon-space-before': 'never',
+    'selector-attribute-operator-space-after': 'never',
+    'selector-attribute-operator-space-before': 'never',
+    'selector-attribute-brackets-space-inside': 'never',
+    'selector-attribute-quotes': 'always',
+    'selector-combinator-space-before': 'always',
+    'selector-combinator-space-after': 'always',
+    'selector-descendant-combinator-no-non-space': true,
+    'selector-pseudo-class-case': 'lower',
+    'selector-pseudo-class-parentheses-space-inside': 'never',
+    'selector-pseudo-element-case': 'lower',
+    'selector-pseudo-element-colon-notation': 'single',
+    'declaration-bang-space-before': 'always',
+    'declaration-colon-space-before': 'never',
+    'block-opening-brace-space-before': 'always',
+    'block-opening-brace-space-after': 'always-single-line',
+    'block-opening-brace-newline-after': 'always',
+    'block-opening-brace-newline-before': 'never-multi-line',
   }
 }

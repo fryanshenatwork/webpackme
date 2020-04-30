@@ -1,7 +1,7 @@
 @import '../config';
 @import '../utilities/index';
 
-#{$passphrase}.table{
+#{$passphrase}.table {
   display: block;
   width: 100%;
   height: auto;
@@ -15,21 +15,21 @@
   $tdPadding: spacing(un) spacing(deux);
   $lightBackground: rgba(0, 0, 0, .1);
   $darkBackground: rgba(255, 255, 255, .04);
-  table{
+  table {
     width: 100%;
     min-width: 800px;
     border: 1px solid transparent;
     background: $darkBackground;
   }
-  td{
+  td {
     padding: $tdPadding;
     min-width: 3em;
     vertical-align: middle;
   }
-  thead{
+  thead {
     width: 100%;
-    tr{
-      th{
+    tr {
+      th {
         padding: $tdPadding;
         padding-top: spacing(deux);
         padding-bottom: spacing(deux);
@@ -39,28 +39,29 @@
         font-size: 1.1em;
         font-weight: bold;
         color: color(font);
-
-        @include light{
+        @include light {
           background: $lightBackground;
         }
-        @include dark{
+        @include dark {
           background: $darkBackground;
         }
       }
     }
   }
-  tbody{
+  tbody {
     width: 100%;
-    tr{
-      &:hover{
+    tr {
+      &:hover {
         background-color: rgba(0, 0, 0, .03);
       }
-      td{
+      td {
         border: 1px solid transparent;
         border-right-color: color(borderColor);
         border-bottom-color: color(borderColor);
       }
-      &:last-child td{ border-bottom-color: transparent; }
+      &:last-child td {
+        border-bottom-color: transparent;
+      }
     }
   }
 }
