@@ -5,7 +5,7 @@
     @return $string + 'px';
   }
 
-  $getVar: breakpoint($string, 'number');
+  $getVar: breakpoint($string);
   @if (type-of($getVar) == number) {
     @return $getVar + 'px';
   }

@@ -8,9 +8,15 @@
   margin: spacing(un) auto spacing(5) auto;
   overflow-x: auto;
   overflow-y: visible;
-  border: 1px solid color(borderColor);
   border-radius: settings(inputRadius);
   -webkit-overflow-scrolling: touch;
+  border: 1px solid color(borderColor);
+  @include light {
+    border-color: color(borderColor);
+  }
+  @include dark {
+    border-color: color(borderColor, d);
+  }
 
   $tdPadding: spacing(un) spacing(deux);
   $lightBackground: rgba(0, 0, 0, .1);
@@ -34,11 +40,16 @@
         padding-top: spacing(deux);
         padding-bottom: spacing(deux);
         border: 1px solid transparent;
-        border-right-color: color(borderColor);
-        border-bottom-color: color(borderColor);
         font-size: 1.1em;
         font-weight: bold;
-        color: color(font);
+        @include light {
+          border-right-color: color(borderColor);
+          border-bottom-color: color(borderColor);
+        }
+        @include dark {
+          border-right-color: color(borderColor, d);
+          border-bottom-color: color(borderColor, d);
+        }
         @include light {
           background: $lightBackground;
         }
@@ -56,8 +67,14 @@
       }
       td {
         border: 1px solid transparent;
-        border-right-color: color(borderColor);
-        border-bottom-color: color(borderColor);
+        @include light {
+          border-right-color: color(borderColor);
+          border-bottom-color: color(borderColor);
+        }
+        @include dark {
+          border-right-color: color(borderColor, d);
+          border-bottom-color: color(borderColor, d);
+        }
       }
       &:last-child td {
         border-bottom-color: transparent;

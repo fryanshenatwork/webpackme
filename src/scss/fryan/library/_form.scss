@@ -37,17 +37,21 @@
     %input-border {
       border: settings(inputBorderWidth) solid settings(inputBorderColor);
       outline: 0;
-      &:hover, &:active, &:focus {
-        @include light {
-          border-color: fade-in(darken($color-light-borderColor, 8%), .2);
+      @include light {
+        border-color: $color-light-borderColor;
+        &:hover, &:active, &:focus {
+          border-color: darken($color-light-borderColor, 8%);
         }
-        @include dark {
-          border-color: fade-in(lighten($color-dark-borderColor, 5%), .2);
+      }
+      @include dark {
+        border-color: $color-dark-borderColor;
+        &:hover, &:active, &:focus {
+          border-color: fade-in($color-dark-borderColor, .08);
         }
       }
     }
     %input-padding {
-      padding: settings(inputPadding, value);
+      padding: settings(inputPadding);
     }
     %input-disabled {
       &:disabled {

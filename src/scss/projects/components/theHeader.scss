@@ -2,7 +2,12 @@ header.theHeader {
   $expendedTogglerScale: false;
 
   .navbar-brand {
-    color: color(font);
+    @include light {
+      color: color(font);
+    }
+    @include dark {
+      color: color(font, d);
+    }
   }
   .navbar-toggler {
     @include transition;
@@ -22,7 +27,12 @@ header.theHeader {
         position: absolute;
         display: block;
         height: $h;
-        background: color(font);
+        @include light {
+          background: color(font);
+        }
+        @include dark {
+          background: color(font, d);
+        }
         @include transition;
         &:nth-child(1) {
           top: 0;
@@ -48,17 +58,22 @@ header.theHeader {
       font-size: .9rem;
       line-height: 1em;
       margin-top: -.5em;
+      &:before, &:after {
+        @include light {
+          color: color(font);
+        }
+        @include dark {
+          color: color(font, d);
+        }
+        @include transition;
+      }
       &:before {
         content: 'MENU';
         max-width: 100%;
-        @include transition;
-        color: color(font);
       }
       &:after {
         content: 'CLOSE';
         opacity: 0;
-        color: color(font);
-        @include transition;
       }
     }
     &[aria-expanded='true'] {
@@ -101,9 +116,24 @@ header.theHeader {
     }
   }
   .navbar-collapse {
-    color: color(font);
-    // ul.navbar-nav {
-    //   li.navbar-nav{}
-    // }
+    ul.navbar-nav {
+      li.nav-item {
+        $parent: &;
+        .nav-link {
+          @include light {
+            color: color(font);
+          }
+          @include dark {
+            color: color(font, d);
+          }
+          span {
+            $child: &;
+            @include parent($parent, '.active', $child) {
+              color: red;
+            }
+          }
+        }
+      }
+    }
   }
 }

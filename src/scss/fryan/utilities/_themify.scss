@@ -1,0 +1,67 @@
+@import './multipleSelector';
+
+@mixin themify($preferColor: 'light') {
+  $originSelector: quote(&);
+  $list: multipleSelector($originSelector);
+  @each $selector in $list {
+    @if (str-slice($selector, 1, 4) == 'body') {
+      $selector: str-slice($selector, 5, str-length($selector));
+    }
+    @if (
+      ($preferColor == 'light') or
+      ($preferColor == 'l') or
+      ($preferColor == 'L')
+    ) {
+      @at-root #{"body[data-prefers-color='auto'] " + $selector} {
+        @media (prefers-color-scheme: 'light') {
+          @content;
+        }
+      }
+      @at-root #{"body[data-prefers-color='light'] " + $selector} {
+        @content;
+      }
+    }
+    @else if (
+      ($preferColor == 'dark') or
+      ($preferColor =='d') or
+      ($preferColor =='D')
+    ) {
+      @at-root #{"body[data-prefers-color='auto'] " + $selector} {
+        @media (prefers-color-scheme: 'dark') {
+          @content;
+        }
+      }
+      @at-root #{"body[data-prefers-color='dark'] " + $selector} {
+        @content;
+      }
+    }
+    @else {
+      @error 'Invalid variable "#{$preferColor }".';
+    }
+  }
+}
+
+@mixin light {
+  @include themify('light') {
+    @content;
+  }
+}
+
+@mixin dark {
+  @include themify('dark') {
+    @content;
+  }
+}
+
+@mixin theme($var) {
+  @if ($var == 'light' or $var == 'l') {
+    @include themify('light') {
+      @content;
+    }
+  }
+  @else if ($var == 'dark' or $var == 'd') {
+    @include themify('dark') {
+      @content;
+    }
+  }
+}

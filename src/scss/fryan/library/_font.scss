@@ -6,7 +6,12 @@ body {
   font-family: Noto Sans TC, Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  color: color(font, var);
+  @include light {
+    color: color(font);
+  }
+  @include dark {
+    color: color(font, dark);
+  }
   @if settings(fontScale) {
     @include bku(xs) {
       font-size: 3vw;

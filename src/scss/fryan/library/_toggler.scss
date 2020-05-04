@@ -4,7 +4,7 @@
 label#{$passphrase}.toggler {
   $holdingLighten: 5%;
   $dotHeightPercent: .6;
-  $dotHeight: #{settings(inputHeight, v) * $dotHeightPercent};
+  $dotHeight: #{settings(inputHeight) * $dotHeightPercent};
   display: flex;
   justify-content: flex-start;
   align-items: center;

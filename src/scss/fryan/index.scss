@@ -3,10 +3,21 @@
 @import './library/index';
 
 body {
-  background: color(background);
+  @include light {
+    background: color(background, light);
+  }
+  @include dark {
+    background: color(background, dark);
+  }
+
   #app {
     .container {
-      background: color(cardBackground);
+      @include light {
+        background: color(cardBackground);
+      }
+      @include dark {
+        background: color(cardBackground, dark);
+      }
     }
   }
 
