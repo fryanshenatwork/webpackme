@@ -1,8 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const StylelintPlugin = require('stylelint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin')
 
 const _path = {
   main: path.resolve(__dirname, '../'),
@@ -11,6 +10,8 @@ const _path = {
   src: path.resolve(__dirname, '../src/'),
   buildAssets: 'assets/'
 }
+
+templates = require('./templates')(_path)
 
 const baseWebpackConfig = {
   context: _path.main,
@@ -62,13 +63,10 @@ const baseWebpackConfig = {
       'Popper': 'popper.js',
       'popper.js': 'popper.js'
     }),
-    new HtmlWebpackPlugin({
-      template: `${_path.src}/public/index.html`
-    }),
     new StylelintPlugin({
       fix: true
     })
-  ],
+  ].concat(templates),
   output: {
     path: _path.dist,
     filename: process.env.NODE_ENV === 'production'
