@@ -8,8 +8,6 @@ const _path = baseConfig._path
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   devServer: {
-    host: '0.0.0.0',
-    port: 8461,
     contentBase: _path.src,
     hot: true,
     inline: true,
@@ -45,11 +43,19 @@ const args = Object.assign(
   }, require('yargs')(processParams).argv
 )
 
-server.listen(8080, '127.0.0.1', () => {
-  console.log('Starting server on http://localhost:8080');
-});
+process.env.NODE_ENV = devWebpackConfig.mode
 
-module.exports = server
-
-console.clear()
-console.log('process.argv', args);
+new Promise(async (resolve) => {
+  const getPort = require('get-port')
+  await getPort({
+    host: args.host,
+    port: getPort.makeRange(args.port, args.port + 10)
+  })
+    .then(res => { resolve(res) })
+})
+  .then((port) => {
+    args.port = port
+    server.listen(args.port, args.host, () => {
+      console.log(`Starting server on ${args.host}:${args.port}`)
+    })
+  })

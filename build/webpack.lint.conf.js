@@ -1,7 +1,8 @@
 const merge = require('webpack-merge')
+const webpack = require('webpack')
 const baseConfig = require('./webpack.base.conf')
 const baseWebpackConfig = baseConfig.baseWebpackConfig
-const _path = baseConfig._path
+// const _path = baseConfig._path
 
 const lintWebpackConfig = merge.smart(baseWebpackConfig, {
   mode: 'development',
@@ -22,4 +23,7 @@ const lintWebpackConfig = merge.smart(baseWebpackConfig, {
   }
 })
 
-module.exports =lintWebpackConfig
+module.exports = webpack(lintWebpackConfig, (done, err) => {
+  console.clear()
+  console.log('Linted')
+})

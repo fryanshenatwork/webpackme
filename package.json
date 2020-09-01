@@ -1,13 +1,13 @@
 {
-  "name": "webpackDev",
-  "version": "1.0.0",
+  "name": "webpackme",
+  "version": "1.0.1",
   "description": "webpack developer tools",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "export NODE_ENV=production && webpack --config ./build/webpack.prod.conf.js",
+    "build": "node ./build/webpack.prod.conf.js",
     "dev": "node ./build/webpack.dev.conf.js",
-    "lint": "webpack --config ./build/webpack.lint.conf.js"
+    "lint": "node ./build/webpack.lint.conf.js"
   },
   "keywords": [
     "npm",
@@ -45,6 +45,7 @@
     "copy-webpack-plugin": "^5.1.1",
     "css-hot-loader": "^1.4.4",
     "eslint": "^6.8.0",
+    "get-port": "^5.1.1",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1",
     "stylelint": "^13.3.3",

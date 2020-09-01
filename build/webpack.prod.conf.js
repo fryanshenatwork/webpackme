@@ -1,4 +1,5 @@
 const merge = require('webpack-merge')
+const webpack = require('webpack')
 const baseConfig = require('./webpack.base.conf')
 const baseWebpackConfig = baseConfig.baseWebpackConfig
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -55,4 +56,8 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-module.exports = prodWebpackConfig
+process.env.NODE_ENV = prodWebpackConfig.mode
+
+module.exports = webpack(prodWebpackConfig,(done, err) => {
+  console.log(done, err)
+})
