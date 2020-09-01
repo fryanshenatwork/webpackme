@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const baseConfig = require('./webpack.base.conf')
 const baseWebpackConfig = baseConfig.baseWebpackConfig
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const _path = baseConfig._path
@@ -30,7 +30,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
       }
     },
     minimizer: [
-      new UglifyJsPlugin({
+      new TerserPlugin({
         cache: true,
         parallel: true,
         sourceMap: true
@@ -50,14 +50,16 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: '*'
     }),
-    new CopyWebpackPlugin([
-      { from: `${_path.src}/public`, to: `public`}
-    ])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: `${_path.src}/public`, to: `public` }
+      ]
+    })
   ]
 })
 
 process.env.NODE_ENV = prodWebpackConfig.mode
 
-module.exports = webpack(prodWebpackConfig,(done, err) => {
+webpack(prodWebpackConfig,(done, err) => {
   console.log(done, err)
 })
