@@ -1,5 +1,6 @@
 const merge = require('webpack-merge')
 const webpack = require('webpack')
+const webpackDevServer = require('webpack-dev-server')
 const baseConfig = require('./webpack.base.conf')
 const baseWebpackConfig = baseConfig.baseWebpackConfig
 const _path = baseConfig._path
@@ -34,4 +35,21 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   watch: false
 })
 
-module.exports = devWebpackConfig
+const server = new webpackDevServer(webpack(devWebpackConfig), devWebpackConfig.devServer)
+
+const [, , ...processParams] = process.argv
+const args = Object.assign(
+  {
+    port: 8080,
+    host: '0.0.0.0'
+  }, require('yargs')(processParams).argv
+)
+
+server.listen(8080, '127.0.0.1', () => {
+  console.log('Starting server on http://localhost:8080');
+});
+
+module.exports = server
+
+console.clear()
+console.log('process.argv', args);
