@@ -1,7 +1,10 @@
+'use strict'
+process.env.NODE_ENV = 'production'
+
 const merge = require('webpack-merge')
 const webpack = require('webpack')
 const baseConfig = require('./webpack.base.conf')
-const baseWebpackConfig = baseConfig.baseWebpackConfig
+const baseWebpackConfig = baseConfig.baseWebpackConfig(process)
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
@@ -58,8 +61,11 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-process.env.NODE_ENV = prodWebpackConfig.mode
-
-webpack(prodWebpackConfig,(done, err) => {
-  console.log(done, err)
+webpack(prodWebpackConfig, (done, err) => {
+  if (err.compilation.errors.length > 0) {
+    console.log(err.compilation.errors)
+    console.log(`Build falied`)
+  } else {
+    console.log('Build success')
+  }
 })

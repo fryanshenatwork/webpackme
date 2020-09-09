@@ -1,8 +1,11 @@
+'use strict'
+process.env.NODE_ENV = 'development'
+
 const merge = require('webpack-merge')
 const webpack = require('webpack')
 const webpackDevServer = require('webpack-dev-server')
 const baseConfig = require('./webpack.base.conf')
-const baseWebpackConfig = baseConfig.baseWebpackConfig
+const baseWebpackConfig = baseConfig.baseWebpackConfig(process)
 const _path = baseConfig._path
 
 const devWebpackConfig = merge(baseWebpackConfig, {
@@ -42,8 +45,6 @@ const args = Object.assign(
     host: '0.0.0.0'
   }, require('yargs')(processParams).argv
 )
-
-process.env.NODE_ENV = devWebpackConfig.mode
 
 new Promise(async (resolve) => {
   const getPort = require('get-port')
