@@ -62,10 +62,14 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
 })
 
 webpack(prodWebpackConfig, (done, err) => {
+  const chalk = require('chalk')
+  const log = require('./log')
   if (err.compilation.errors.length > 0) {
-    console.log(err.compilation.errors)
-    console.log(`Build falied`)
+    console.log(`\n\n\n================================================================================`)
+    console.log(err.compilation.errors[0])
+    console.log(`================================================================================\n\n\n`)
+    log(chalk.red.bold(`Build falied`))
   } else {
-    console.log('Build success')
+    log(chalk.green.bold('Build success'))
   }
 })

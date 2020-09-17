@@ -7,6 +7,7 @@ const webpackDevServer = require('webpack-dev-server')
 const baseConfig = require('./webpack.base.conf')
 const baseWebpackConfig = baseConfig.baseWebpackConfig(process)
 const _path = baseConfig._path
+const ip = require('ip').address()
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
@@ -15,6 +16,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     inline: true,
     publicPath: '/',
+    public: ip,
     watchContentBase: true,
     compress: true,
     progress: false,
@@ -57,6 +59,17 @@ new Promise(async (resolve) => {
   .then((port) => {
     args.port = port
     server.listen(args.port, args.host, () => {
-      console.log(`Starting server on ${args.host}:${args.port}`)
+      const chalk = require('chalk')
+      const log = require('./log')
+      console.log()
+      log(`Project is running at ` + chalk.underline.bold(`${ip}:${args.port}`))
+      log(`Manually HTML Inject`)
+      console.log(chalk.grey(
+        `================================================================================\n`,
+        `<link rel="stylesheet" type="text/css" href="http://${ip}:${args.port}/assets/bundle.css"/>\n`,
+        `<script src="http://${ip}:${args.port}/assets/bundle.js"></script>\n`,
+        `<script src="http://${ip}:${args.port}/webpack-dev-server.js"></script>\n`,
+        `================================================================================`
+      ))
     })
   })

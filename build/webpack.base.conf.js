@@ -35,7 +35,10 @@ const baseWebpackConfig = function (process) {
             },
             {
               loader: 'eslint-loader',
-              options: { fix: true }
+              options: {
+                fix: true,
+                emitWarning: true
+              }
             }
           ]
         },
