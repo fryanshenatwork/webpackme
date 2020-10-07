@@ -5,6 +5,7 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const webpackDevServer = require('webpack-dev-server')
 const baseConfig = require('./webpack.base.conf')
+const chokidar = require('chokidar')
 const baseWebpackConfig = baseConfig.baseWebpackConfig(process)
 const _path = baseConfig._path
 const ip = require('ip').address()
@@ -17,7 +18,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     inline: true,
     publicPath: '/',
     public: ip,
-    watchContentBase: true,
+    watchContentBase: false,
     compress: true,
     progress: false,
     open: false,
@@ -25,6 +26,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+    },
+    before (app, server) {
+      chokidar.watch([
+        _path.src + '/templates/**/*.html'
+      ]).on('all', function () {
+        server.sockWrite(server.sockets, 'content-changed')
+      })
     }
   },
   watchOptions: {
@@ -34,8 +42,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
+    // new webpack.NamedModulesPlugin()
   ],
-  watch: false
+  watch: true
 })
 
 const server = new webpackDevServer(webpack(devWebpackConfig), devWebpackConfig.devServer)

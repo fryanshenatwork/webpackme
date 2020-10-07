@@ -1,4 +1,5 @@
-const fs = require('fs');
+'use strict'
+const fs = require('fs')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
