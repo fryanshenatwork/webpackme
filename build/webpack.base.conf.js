@@ -8,12 +8,16 @@ const _path = {
   build: path.resolve(__dirname, '../build/'),
   dist: path.resolve(__dirname, '../dist/'),
   src: path.resolve(__dirname, '../src/'),
-  buildAssets: 'assets/'
+  buildAssets: 'assets/',
+  publicPath: {
+    development: '',
+    production: './'
+  }
 }
 
-templates = require('./templates')(_path)
 
 const baseWebpackConfig = function (process) {
+  templates = require('./templates')(_path, process)
   return {
     context: _path.main,
     entry: {

@@ -2,8 +2,16 @@
 const fs = require('fs')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin')
 
-module.exports = function (_path) {
+module.exports = function (_path, process) {
+  const replaceKey = [
+    {
+      pattern: '<!-- publicPath -->',
+      replacement: _path.publicPath[process.env.NODE_ENV]
+    }
+  ]
+
   const templatesPath = _path.src + '/templates/'
   const searchRecursive = function (dir, pattern) {
     var results = []
@@ -20,7 +28,7 @@ module.exports = function (_path) {
     return results
   }
 
-  const templates = searchRecursive(templatesPath, '.html').map(e => {
+  const templatesPlugin = searchRecursive(templatesPath, '.html').map(e => {
     return new HtmlWebpackPlugin({
       template: e,
       filename: e.replace(templatesPath, ''),
@@ -29,5 +37,9 @@ module.exports = function (_path) {
     })
   })
 
-  return templates
+  const replacementPlugin = new HtmlReplaceWebpackPlugin(replaceKey)
+
+  return []
+    .concat(templatesPlugin)
+    .concat(replacementPlugin)
 }
