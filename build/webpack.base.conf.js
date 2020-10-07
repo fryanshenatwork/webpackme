@@ -75,7 +75,10 @@ const baseWebpackConfig = function (process) {
       path: _path.dist,
       filename: process.env.NODE_ENV === 'production'
         ? _path.buildAssets + '[name].[hash].js'
-        : _path.buildAssets + 'bundle.js'
+        : _path.buildAssets + 'bundle.js',
+      publicPath: process.env.NODE_ENV === 'production'
+      ? './'
+      : '/'
     },
     devtool: 'source-map',
     resolve: {
