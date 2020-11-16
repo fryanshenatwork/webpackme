@@ -1,4 +1,5 @@
 module.exports = {
+  extends: ['airbnb'],
   env: {
     'node': true,
     'es6': true,
@@ -25,9 +26,33 @@ module.exports = {
     'no-unexpected-multiline': 'error',
     'no-self-assign': 'error',
     'no-self-compare': 'error',
-    'no-useless-catch': 'error'
+    'no-useless-catch': 'error',
+    'func-names': ['error', 'as-needed']
   },
-  'parserOptions': {
-    'sourceType': 'module',
+  parserOptions: {
+    sourceType: 'module',
+    ecmaVersion: 8
+  },
+  plugins: [
+    'react',
+    'jsx-a11y',
+    'import'
+  ],
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src']
+        ]
+      }
+    }
+  },
+  globals: {
+    '$': true,
+    'jquery': true,
+    'jQuery': true,
+    'Popper': true,
+    'popper.js': true,
+    'window': true
   }
 }

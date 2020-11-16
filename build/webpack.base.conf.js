@@ -35,6 +35,9 @@ const baseWebpackConfig = function (process) {
               loader: 'babel-loader',
               options: {
                 presets: ['@babel/preset-env'],
+                plugins: [
+                  ['@babel/transform-runtime']
+                ]
               }
             },
             {
@@ -73,6 +76,9 @@ const baseWebpackConfig = function (process) {
       }),
       new StylelintPlugin({
         fix: true
+      }),
+      new webpack.EnvironmentPlugin({
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       })
     ].concat(templates),
     output: {
