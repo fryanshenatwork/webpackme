@@ -1,0 +1,41 @@
+{
+  "timer": {
+    "realtime": { "interval": 30, "timeout": 10 },
+    "alarm": { "interval": 30, "timeout": 10 }
+  },
+  "list": [
+    {
+      "_blockName": "BLOCK_NAME",
+      "devices": [
+        {
+          "deviceName": "DEVICE_NAME",
+          "pcmId": "PCM_ID",
+          "deviceId": "DEVICE_ID",
+          "theme": "THEME_temperature",
+          "unit": "UNIT"
+        }
+      ],
+      "tables": [
+        {
+          "deviceName": "DEVICE_NAME",
+          "defaultColor": {
+            "unFetched": "COLOR_BLACK",
+            "unMatched": "COLOR_WHITE"
+          },
+          "devices": [
+            {
+              "pcmId": "PCM_ID",
+              "deviceId": "DEVICE_ID",
+              "color": "COLOR_GREEN"
+            },
+            {
+              "pcmId": "PCM_ID",
+              "deviceId": "DEVICE_ID",
+              "color": "COLOR_RED"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

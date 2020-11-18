@@ -1,9 +1,3 @@
-console.log('WebpackMe is working')
+'use strict'
 
-const updatePreferColorSchema = function(event) {
-  const button = $(event.submitter)
-  const selectedVal = button.val()
-
-  $('body').attr('data-prefers-color', selectedVal)
-}
-window.updatePreferColorSchema = updatePreferColorSchema
+import './eboard'
