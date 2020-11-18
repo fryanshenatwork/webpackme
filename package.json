@@ -1,13 +1,14 @@
 {
   "name": "webpackme",
-  "version": "1.0.1",
+  "version": "0.0.1",
   "description": "webpack developer tools",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node ./build/webpack.prod.conf.js",
     "dev": "node ./build/webpack.dev.conf.js",
-    "lint": "node ./build/webpack.lint.conf.js"
+    "lint": "node ./build/webpack.lint.conf.js",
+    "pack": "tar -zcvf ./dist/$npm_package_name.tar.gz -C dist/ . ; find dist/. -maxdepth 1 -not -iname '*.tar.gz' -exec rm -rf {} \\;"
   },
   "keywords": [
     "npm",
@@ -60,6 +61,8 @@
     "chalk": "^4.1.0",
     "html-replace-webpack-plugin": "^2.5.6",
     "jquery": "^3.5.1",
-    "popper.js": "^1.16.1"
+    "jquery.marquee": "^1.5.0",
+    "popper.js": "^1.16.1",
+    "vue": "^2.6.12"
   }
 }
