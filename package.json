@@ -1,6 +1,6 @@
 {
-  "name": "webpackme",
-  "version": "0.0.1",
+  "name": "webpackme_eboard_pack",
+  "version": "0.0.0",
   "description": "webpack developer tools",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,12 @@
     "build": "node ./build/webpack.prod.conf.js",
     "dev": "node ./build/webpack.dev.conf.js",
     "lint": "node ./build/webpack.lint.conf.js",
-    "pack": "tar -zcvf ./dist/$npm_package_name.tar.gz -C dist/ . ; find dist/. -maxdepth 1 -not -iname '*.tar.gz' -exec rm -rf {} \\;"
+    "pack": "tar -zcvf ./dist/$npm_package_name-v$npm_package_version.tar.gz -C dist/ . ; find dist/. -maxdepth 1 -not -iname '*.tar.gz' -exec rm -rf {} \\;",
+    "buildPack": "npm run build; npm run pack",
+    "gitTag": "git add . ; git commit -m \"$npm_package_name-v$npm_package_version\"; git tag $npm_package_name-v$npm_package_version",
+    "version:patch": "npm version patch --no-git-tag-version;git st; npm run gitTag",
+    "version:minor": "npm version minor --no-git-tag-version;git st; npm run gitTag",
+    "version:major": "npm version major --no-git-tag-version;git st; npm run gitTag"
   },
   "keywords": [
     "npm",
