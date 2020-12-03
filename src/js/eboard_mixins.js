@@ -8,7 +8,10 @@ export default {
     return {
       state: {
         configSettled: false,
-        updateCount: 0,
+        updateCount: {
+          realtime: 0,
+          alarm: 0
+        },
         msg: '初始化'
       },
       responses: {
@@ -91,6 +94,9 @@ export default {
         _this.state.configSettled = true
         return true
       })
+      .catch((ers) => {
+        console.error('[eboard_mixins:beforeMount] - Dashboard config undefined')
+      })
   },
   mounted() {
     $('#app').css({ opacity: 1 })
@@ -171,7 +177,8 @@ export default {
       _this.state.msg = '取得即時資料'
 
       const fetchLists = []
-      lists.forEach(e => {
+      lists.forEach((e, ei) => {
+        const originObj = lists[ei]
         fetchLists.push(
           _this._api(
             'deviceData',
@@ -180,43 +187,44 @@ export default {
               devid: e.deviceId
             }
           )
-        )
-      })
-
-      return new Promise((resolve, reject) => {
-        Promise.all(fetchLists)
-          .then(res => {
-            res.forEach((e, ei) => {
-              const originObj = lists[ei]
-              if (e.state !== 1) {
-                console.error('Fetch state error', e)
+            .then((res) => {
+              if (res.state !== 1) {
+                console.error('Fetch state error', res)
                 originObj._link._fetchedData.fetched = false
                 return false
               }
               if (
-                e.list
-                && e.list[0]
-                && e.list[0].data
-                && e.list[0].data[0]
-                && e.list[0].data[0].Data !== undefined
-                && e.list[0].data[0].Time
+                res.list
+                && res.list[0]
+                && res.list[0].data
+                && res.list[0].data[0]
+                && res.list[0].data[0].Data !== undefined
+                && res.list[0].data[0].Time
               ) {
                 if (originObj._link._fetchedData.fetched === false) {
                   originObj._link._fetchedData.fetched = true
                 }
-                originObj._link._fetchedData.data = e.list[0].data[0].Data
-                originObj._link._fetchedData.time = e.list[0].data[0].Time
+                originObj._link._fetchedData.data = res.list[0].data[0].Data
+                originObj._link._fetchedData.time = res.list[0].data[0].Time
               }
             })
-
-            _this.realtimeList = Object.assing({}, _this.realtimeList)
-
-            _this.$nextTick(() => {
-              _this.state.updateCount++
+            .catch((ers) => {
+              console.error('[eboard_mixins:_api_fetchRealtime] - fetch device data error', ers)
             })
-            resolve()
+        )
+      })
+
+      return new Promise((resolve, reject) => {
+        const commonAction = function () {
+          _this.realtimeList = Object.assing({}, _this.realtimeList)
+        }
+        Promise.all(fetchLists)
+          .then((allDone) => {
+            commonAction()
+            resolve(true)
           })
           .catch((ers) => {
+            commonAction()
             console.error('[api_fetchRealtime] - error', ers)
             reject(false)
           })
@@ -306,6 +314,15 @@ export default {
       }
 
       const theSetting = theSettings[type]
+      if (init) {
+        theSetting.interval = 0
+      } else if (init === false && _this.state.updateCount === 1) {
+        theSetting.interval = 5 * 1000
+      } else {
+        theSetting.interval = theSetting.interval * 1000
+      }
+
+      _this.$nextTick(() => { _this.state.updateCount[type]++ })
 
       if (window.timer === undefined) { window.timer = {} }
       if (window.timer[type] === undefined) { window.timer[type] === null}
@@ -329,7 +346,7 @@ export default {
         } else {
           clearTimeout(theTimer)
         }
-      }, init ? 0 : theSetting.interval * 1000)
+      }, theSetting.interval)
     },
     _helper_isExist(windowTimer = true) {
       const _this = this
