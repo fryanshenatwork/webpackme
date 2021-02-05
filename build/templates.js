@@ -29,9 +29,12 @@ module.exports = function (_path, process) {
   }
 
   const templatesPlugin = searchRecursive(templatesPath, '.html').map(e => {
+    const folderSign = templatesPath.substr(0, 1)
+    const e_m = e.replace(/[/]/g, folderSign)
+    const templatesPath_m = templatesPath.replace(/[/]/g, folderSign)
     return new HtmlWebpackPlugin({
       template: e,
-      filename: e.replace(templatesPath, ''),
+      filename: e_m.replace(templatesPath_m, ''),
       inject: true,
       minify: false
     })
