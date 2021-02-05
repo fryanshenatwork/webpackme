@@ -93,7 +93,7 @@ const baseWebpackConfig = function (process) {
     devtool: 'source-map',
     resolve: {
       alias: {
-        '@': _path.src
+        '/@': _path.src
       }
     }
   }
