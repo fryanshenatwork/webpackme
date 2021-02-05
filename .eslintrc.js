@@ -46,6 +46,9 @@ module.exports = {
   },
   "plugins": ["import", "eslint-plugin-vue", "typescript"],
   "globals": {
+    '$': true,
+    'jquery': true,
+    'jQuery': true,
     "window": true,
     "document": true
   },
@@ -58,13 +61,7 @@ module.exports = {
       "error",
       { "vars": "all", "args": "none", "ignoreRestSiblings": false }
     ],
-    "no-underscore-dangle": [
-      "error",
-      {
-        "allowAfterThis": true,
-        "allow": ["_this"]
-      }
-    ],
+    "no-underscore-dangle": [0],
     "space-before-function-paren": ["error", "always"],
     "array-element-newline": [
       "error",
@@ -87,6 +84,9 @@ module.exports = {
     "no-param-reassign": [0],
     "no-shadow": ["error", {"builtinGlobals": false, "hoist": "functions", "allow": [] }],
     "prefer-promise-reject-errors": [0],
-    "global-require": [0]
+    "global-require": [0],
+    "no-new": [0],
+    "consistent-return": [0],
+    "no-async-promise-executor": [0]
   }
 }
