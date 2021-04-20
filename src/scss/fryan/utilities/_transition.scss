@@ -1,7 +1,0 @@
-@mixin transition($ease: ease .3s) {
-  transition: $ease;
-}
-
-%transition {
-  @include transition;
-}
