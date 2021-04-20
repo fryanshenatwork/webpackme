@@ -1,0 +1,64 @@
+$color-red: #B03060;
+$color-orange: #FE9A76;
+$color-yellow: #FFD700;
+$color-olive: #32CD32;
+$color-green: #016936;
+$color-teal: #008080;
+$color-blue: #0E6EB8;
+$color-violet: #EE82EE;
+$color-purple: #B413EC;
+$color-pink: #FF1493;
+$color-brown: #A52A2A;
+$color-grey: #A0A0A0;
+$color-black: #000000;
+
+$colors: (
+  'light': (
+    'red': $color-red,
+    'orange': $color-orange,
+    'yellow': $color-yellow,
+    'olive': $color-olive,
+    'green': $color-green,
+    'teal': $color-teal,
+    'blue': $color-blue,
+    'violet': $color-violet,
+    'purple': $color-purple,
+    'pink': $color-pink,
+    'brown': $color-brown,
+    'grey': $color-grey,
+    'black': $color-black,
+    // following items are required
+    'font': rgb(80, 80, 80),
+    'background': rgb(255, 254, 250),
+    'contentBackground': mix(rgb(255, 254, 250), black, 90%),
+    'borderColor': rgb(200, 200, 200),
+  ),
+  'dark': (
+    'red': $color-red,
+    'orange': $color-orange,
+    'yellow': $color-yellow,
+    'olive': $color-olive,
+    'green': $color-green,
+    'teal': $color-teal,
+    'blue': $color-blue,
+    'violet': $color-violet,
+    'purple': $color-purple,
+    'pink': $color-pink,
+    'brown': $color-brown,
+    'grey': $color-grey,
+    'black': $color-black,
+    // following items are required
+    'font': rgba(255, 255, 255, .85),
+    'background': rgb(19, 29, 36),
+    'contentBackground': mix(rgb(19, 29, 36), white, 97%),
+    'borderColor': rgba(255, 255, 255, .1),
+  )
+) !default;
+
+
+$color-light-map: map-get($colors, 'light') !default;
+$color-dark-map: '' !default;
+
+@if map-has-key($colors, 'dark') {
+  $color-dark-map: map-get($colors, 'dark');
+}

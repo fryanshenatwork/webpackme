@@ -1,2 +1,10 @@
-@import './framingo/index.scss';
+@import './framingoConfig/index';
+@import '~framingo/src/config/_breakpoint.scss';
+@import '~framingo/src/config/_spacing.scss';
+@import '~framingo/src/config/_setting.scss';
+@import '~framingo';
 @import './projects/index.scss';
+
+body {
+  background: color(background);
+}

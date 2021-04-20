@@ -64,7 +64,7 @@
     "@babel/runtime": "^7.12.5",
     "bootstrap": "^4.3.1",
     "chalk": "^4.1.0",
-    "framingo": "git+https://github.com/fryanshenatwork/framingo.git",
+    "framingo": "git+https://github.com/fryanshenatwork/framingo.git#1.0.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1"
   }

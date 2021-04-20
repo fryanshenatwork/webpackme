@@ -1,0 +1,9 @@
+$breakpoint-map: (
+  'xs': 320, // custom
+  'sm': 576, // extend bootstrap4
+  'md': 768, // extend bootstrap4
+  'lg': 992, // extend bootstrap4
+  'xl': 1200, // extend bootstrap4
+  'xxl': 1440, // custom
+  'xxxl': 1600
+) !default;
