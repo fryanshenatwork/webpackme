@@ -28,6 +28,22 @@ const baseWebpackConfig = function (process) {
     module: {
       rules: [
         {
+          test: /\.ts?$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'ts-loader'
+            },
+            {
+              loader: 'eslint-loader',
+              options: {
+                fix: true,
+                emitWarning: true
+              }
+            }
+          ]
+        },
+        {
           test: /\.(js)$/,
           exclude: /node_modules/,
           use: [
@@ -90,12 +106,14 @@ const baseWebpackConfig = function (process) {
       ? './'
       : '/'
     },
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     resolve: {
+      extensions: ['.ts', '.js'],
       alias: {
         '/@': _path.src
       }
-    }
+    },
+    stats: 'errors-only'
   }
 }
 
