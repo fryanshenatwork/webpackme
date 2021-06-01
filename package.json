@@ -1,6 +1,6 @@
 {
-  "name": "webpackme",
-  "version": "1.0.1",
+  "name": "plugin.name",
+  "version": "0.0.0",
   "description": "webpack developer tools",
   "main": "main.js",
   "scripts": {
