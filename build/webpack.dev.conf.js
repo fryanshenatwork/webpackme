@@ -13,6 +13,7 @@ const ip = require('ip').address()
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   devServer: {
+    https: true,
     contentBase: _path.src,
     hot: true,
     inline: true,

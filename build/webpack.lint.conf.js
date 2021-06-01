@@ -14,11 +14,11 @@ const lintWebpackConfig = merge.smart(baseWebpackConfig, {
           { loader: 'prettier-loader' }
         ]
       },
-      {
-        test: /\.(scss|sass)$/,
-        use: [
-        ]
-      }
+      // {
+      //   test: /\.(scss|sass)$/,
+      //   use: [
+      //   ]
+      // }
     ]
   }
 })

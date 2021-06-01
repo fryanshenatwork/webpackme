@@ -8,13 +8,12 @@ const _path = {
   build: path.resolve(__dirname, '../build/'),
   dist: path.resolve(__dirname, '../dist/'),
   src: path.resolve(__dirname, '../src/'),
-  buildAssets: 'assets/',
+  buildAssets: '',
   publicPath: {
     development: '',
     production: './'
   }
 }
-
 
 const baseWebpackConfig = function (process) {
   templates = require('./templates')(_path, process)
@@ -49,43 +48,44 @@ const baseWebpackConfig = function (process) {
             }
           ]
         },
-        {
-          test: /\.(scss|sass)$/,
-          exclude: /node_modules/,
-          use: [
-            'css-hot-loader',
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            'sass-loader'
-          ]
-        }
+        // {
+        //   test: /\.(scss|sass)$/,
+        //   exclude: /node_modules/,
+        //   use: [
+        //     'css-hot-loader',
+        //     MiniCssExtractPlugin.loader,
+        //     'css-loader',
+        //     'sass-loader'
+        //   ]
+        // }
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: process.env.NODE_ENV === 'production'
-          ? _path.buildAssets + '[name].[hash].css'
-          : _path.buildAssets + 'bundle.css'
-      }),
+      // new MiniCssExtractPlugin({
+      //   filename: process.env.NODE_ENV === 'production'
+      //     ? _path.buildAssets + '[name].[hash].css'
+      //     : _path.buildAssets + 'bundle.css'
+      // }),
       new webpack.ProvidePlugin({
-        '$': 'jquery',
-        'jquery': 'jquery',
-        'jQuery': 'jquery',
-        'Popper': 'popper.js',
-        'popper.js': 'popper.js'
+        // '$': 'jquery',
+        // 'jquery': 'jquery',
+        // 'jQuery': 'jquery',
+        // 'Popper': 'popper.js',
+        // 'popper.js': 'popper.js'
       }),
-      new StylelintPlugin({
-        fix: true
-      }),
+      // new StylelintPlugin({
+      //   fix: true
+      // }),
       new webpack.EnvironmentPlugin({
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       })
     ].concat(templates),
     output: {
       path: _path.dist,
-      filename: process.env.NODE_ENV === 'production'
-        ? _path.buildAssets + '[name].[hash].js'
-        : _path.buildAssets + 'bundle.js',
+      filename: require('../package.json').name + '.js',
+      // filename: process.env.NODE_ENV === 'production'
+      //   ? _path.buildAssets + '[name].[hash].js'
+      //   : _path.buildAssets + 'bundle.js',
       publicPath: process.env.NODE_ENV === 'production'
       ? './'
       : '/'
